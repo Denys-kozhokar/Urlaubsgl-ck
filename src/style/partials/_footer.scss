@@ -1,0 +1,152 @@
+footer{
+	padding: 16px 0 18px;
+	background-color: $white-bg;
+	border-top: $footer-border;
+}
+
+.footerLogo{
+	text-align: center;
+	font: $MontsB-16;
+	color: $redText;
+	letter-spacing: 0.8px;
+	margin-bottom: 12px;
+}
+
+.company{
+	&__title{
+		text-align: center;
+		margin-bottom: 2px;
+		font: $MontsB-14;
+		color: $darkText;
+	}
+
+	&__list{
+		text-align: center;
+		margin-bottom: 12px;
+	}
+
+	&__item{
+		display: inline-block;
+		margin-right: 10px;
+		&:last-child{
+			margin-right: 0;
+		}
+	}
+
+	&__link{
+		font: $RoboL-14;
+		color: $darkgrayText;
+	}
+}
+
+.partnerList{
+	&__title{
+		@extend .company__title;
+		margin-bottom: 14px;
+	}
+}
+
+.designed{
+	text-align: center;
+	margin-bottom: 10px;
+	font: $MontsB-10;
+	color: $grayText;
+	letter-spacing: 1px;
+}
+
+.areto{
+	text-align: center;
+}
+
+
+
+@media only screen and (min-width: 670px) {
+	/*============================================Tablet styles============================*/
+	footer{
+		padding-top: 24px;
+	}
+
+	.footerLogo{
+		text-align: left;
+	}
+
+	.footerLeft{
+		display: inline-block;
+		width: 480px;
+		margin-left: 30px;
+		font-size: 0;
+	}
+
+	.footerRight{
+		display: inline-block;
+		float: right;
+	}
+
+	.footerLogo{
+		display: inline-block;
+		vertical-align: top;
+		width: 33.333333333333336%;
+	}
+
+	.company{
+		display: inline-block;
+		vertical-align: top;
+		width: 33.333333333333336%;
+		padding-left: 13.55%;
+
+
+		&__title{
+			text-align: left;
+			margin-bottom: 12px;
+		}
+
+		&__list{
+			text-align: left;
+		}
+
+		&__item{
+			display: block;
+			margin-right: 0;
+			margin-bottom: 5px;
+		}
+	}
+
+	.partnerList{
+		display: inline-block;
+		vertical-align: top;
+		width: 33.333333333333336%;
+		&__title{
+			text-align: center;
+			margin-left: 33%;
+		}
+	}
+
+	.designed{
+		margin: 15px 30px 5px;
+	}
+
+
+
+}
+
+@media only screen and (min-width: 900px) {
+	/*=========================================Desktop styles====================================*/
+
+	.footerLeft{
+		margin-left: 0;
+	}
+
+	.company{
+		padding-left: 16.55%;
+	}
+
+	.partnerList{
+		&__title{
+			margin-left: 37%;
+		}
+	}
+
+	.designed{
+		margin-right: 0;
+	}
+}

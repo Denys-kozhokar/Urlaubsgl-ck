@@ -1,0 +1,479 @@
+main{
+	background-color: $white-bg;
+}
+
+.howItWorks{
+
+	&__title{
+		font: $MontsB-22;
+		color: $darkText;
+		text-align: center;
+		margin: 34px 0 14px;
+	}
+}
+
+.carousel{
+	max-width: 300px;
+	height: 240px;
+	margin: 0 auto 10px;
+	vertical-align: bottom;
+	border-radius: 5px;
+	background-color: lightgray;
+	position: relative;
+	overflow: hidden;
+	
+
+	&--1{
+		background: url("../img/carousPicture1.jpg") no-repeat center bottom;
+	}
+
+	&--2{
+		background: url("../img/carousPicture2.jpg") no-repeat center bottom;
+
+		.carousel__text{
+			letter-spacing: 0.1px;
+		}
+	}
+	
+	&--3{
+		background: url("../img/carousPicture3.jpg") no-repeat center bottom;		
+	}
+	
+	&__content{
+		position: absolute;
+		left: 19px;
+		bottom: 17px;
+		height: auto;
+		padding-right: 19px;
+	}
+
+	&__step{
+		margin: 0 0 14px;
+		width: 70px;
+		height: 20px;
+		background-color: $findBg;
+		border-radius: $bordRadius;
+		font: $MontsR-10;
+		color: $whiteText;
+		letter-spacing: 1.9px;
+		line-height: 22px;
+		padding-left: 16px;
+	}
+
+	&__title{
+		font: $MontsB-24;
+		color: $whiteText;
+	}
+
+	&__text{
+		font: $RoboL-14;
+		color: $grayText;
+		line-height: 16px;
+		margin-top: 13px;
+	}
+}
+
+.partners{
+
+	&__title{
+		@extend .howItWorks__title;
+		margin-bottom: 13px;
+		margin-left: -7px;
+	}
+
+	&__item{
+		max-width: 220px;
+		margin: 0 auto;
+		figcaption{
+			font: $MontsB-14;
+			color: $darkText;
+			text-align: center;
+			margin: 18px 0 0 -4px;
+		}
+	}
+
+	&__figure{
+		width: 121px;
+		height: 121px;
+		margin: 0 auto;
+		position: relative;
+		left: -2px;
+
+		&:after{
+			content: '';
+			display: block;
+			border: 4px solid #fff;
+			border-radius: 50%;
+			height: 40px;
+			width: 40px;
+			position: absolute;
+			right: -4px;
+			bottom: -4px;
+		}
+
+		&--1{
+			@include sprite($partner-1);
+				&:after{
+				content: '';
+				background-color: $findBg;
+			}
+		}
+		&--2{
+			@include sprite($partner-2);
+			&:after{
+				content: '';
+				background-color: $yellow-bg;
+			}
+		}
+		&--3{
+			@include sprite($partner-3);
+			&:after{
+				content: '';
+				background-color: $green-bg;
+			}
+		}
+		&--4{
+			@include sprite($partner-4);
+			&:after{
+				content: '';
+				background-color: $indigo-bg;
+			}
+		}
+
+	}
+
+	&__description{
+		font: $RoboL-14;
+		color: $darkgrayText;
+		line-height: 16px;
+		letter-spacing: 0.1px;
+		margin-top: 14px;
+		margin-bottom: 28px;
+		text-align: center;
+
+	}
+
+	&__holder--vert{
+		&:last-child{
+			.partners__description{
+				margin-left: -6px;
+			}
+		}
+	}
+
+	&__other{
+		text-align: center;
+		height: 40px;
+		border: $red-border;
+		background-color: $white-bg;
+		border-radius: $bordRadius;
+		margin: -2px auto 0;
+		width: 280px;
+
+		&_link{
+			display: block;
+			width: 100%;
+			height: 100%;
+			font: $MontsB-14;
+			color: $redText;
+			line-height: 37px;
+		}
+	}
+
+}
+
+.ideas{
+	&__title{
+		@extend .howItWorks__title;
+		margin-bottom: 13px;
+	}
+
+	&__holder{
+		height: 901px;
+		border: 1px solid black;
+		max-width: 320px;
+		margin: 0 auto;
+	}
+
+	.grid{
+		&__sizer {
+			width: 100%;
+		}
+
+		&__item {
+			@extend .grid__sizer;
+			height: 118px;
+			background: #D26;
+			border: 2px solid #333;
+			border-color: hsla(0, 0%, 0%, 0.5);
+			border-radius: 5px;
+			margin-bottom: 10px;
+		}
+	}
+
+
+
+}
+
+.discover{
+	padding-bottom: 40px;
+
+	&__title{
+		@extend .howItWorks__title;
+		margin-bottom: 8px;
+	}
+
+	&__questions{
+		font: $RoboL-18;
+		color: $darkText;
+		text-align: center;
+		margin: 0 0 15px;
+	}
+
+	&__input{
+		font: $RoboL-14;
+		color: $inpText;
+		padding-left: 15px;
+		display: block;
+		width: 280px;
+		height: 40px;
+		margin: 0 auto 12px;
+		border-radius: 5px;
+		border: $gray-border;
+		position: relative;
+		left: -2px;
+
+	}
+
+	&__button{
+		display: block;
+		@extend .partners__other;
+		border: none;
+		background-color: $findBg;
+		font: $MontsB-14;
+		color: $whiteText;
+		position: relative;
+		left: -2px;
+		cursor: pointer;
+	}
+}
+
+
+
+
+
+@media only screen and (min-width: 670px) {
+	/*============================================Tablet styles============================*/
+
+
+	.howItWorks{
+		font-size:0;
+
+		&__title{
+			margin: 94px 0 34px 5px;
+		}
+	}
+
+	.carousel{
+		display: inline-block;
+		vertical-align: top;
+		width: 31.550802139037433%;
+		margin-right: 2.6737967914438503%;
+		height: 400px;
+
+		&--3{
+			margin-right: 0;
+		}
+
+		&--1{
+			background: url("../img/carousPicture1.jpg") no-repeat center center;
+		}
+
+		&--2{
+			background: url("../img/carousPicture2.jpg") no-repeat center center;
+		}
+		
+		&--3{
+			background: url("../img/carousPicture3.jpg") no-repeat center center;		
+		}
+
+		&__content{
+			padding-right: 15px;
+		}
+
+
+		&__text{
+			line-height: 17px;
+			letter-spacing: -0.1px;
+			margin-top: 10px;
+		}
+	}
+
+	.partners{
+		&__holder{
+			width: 492px;
+			margin: 0 auto;
+			font-size: 0;
+			&--vert{
+				display: inline-block;
+				vertical-align: top;
+				width: 50%;
+
+				&:first-child{
+					margin-left: -3px;
+				}
+
+				&:last-child{
+					padding-left: 18px;
+				}
+			}
+		}
+
+		&__title{
+			margin: 86px 0 32px -5px;
+		}
+
+		&__description{
+			margin: 12px 0 56px -5px;
+			line-height: 17px;
+		}
+
+		&__other{
+			margin-top: -19px;
+			width: 192px;
+			position: relative;
+			left: -2px;
+		}
+	}
+
+	.ideas{
+		&__title{
+			margin-top: 95px;
+			margin-left: -2px;
+		}
+
+		&__holder{
+		max-width: 100%;
+		}
+
+		.grid{
+			&__sizer {
+				width: 33.333333333333336%;
+			}
+
+			&__item {
+				height: 310px;
+				padding-right: 20px;
+				overflow: hidden;
+				img{
+					width: 100%;
+
+				}
+			}
+
+			&__item--outer{
+				padding-right: 0;
+			}
+
+			&__item--width2 {
+				width:  66.66666666666667%; 
+			}
+		}
+
+
+	}
+
+	.discover{
+		padding-bottom: 88px;
+		max-width: 410px;
+		margin: 0 auto;
+
+		&__title{
+			margin: 95px 0 29px -5px;
+		}
+
+		&__questions{
+			margin: 0 0 37px -5px;
+		}
+		
+		&__input{
+			display: inline-block;
+			width: 240px;
+			margin-right: 6px;
+		}
+
+		&__button{
+			display: inline-block;
+			width: 160px;
+		}
+	}
+
+
+}
+
+@media only screen and (min-width: 900px) {
+	/*=========================================Desktop styles====================================*/
+	
+	.howItWorks{
+		font-size:0;
+
+		&__title{
+			margin-left: 0;
+		}
+	}
+
+	.carousel{
+		width: 31.914893617021278%;
+		margin-right: 2.127659574468085%;
+
+		&--3{
+			margin-right: 0;
+		}
+
+		&__text{
+			letter-spacing: 0;
+		}
+	}
+
+	.partners{
+		&__holder{
+			width: 100%;
+			position: relative;
+
+			&--vert{
+				width: 75%;
+
+				&:last-child{
+					position: absolute;
+				    top: 0;
+				    right: 0;
+					padding-left: 0;
+				}
+			}
+		}
+
+		&__item{
+			display: inline-block;
+			vertical-align: top;
+			&:last-child{
+				float: right;
+			}
+
+			&--1{
+				padding-left: 10px;
+			}
+			&--2{
+				padding-left: 0;
+			}
+			&--3{
+				padding-left: 12px;
+			}
+			&--4{
+				padding-left: 5px;
+			}
+		}
+	}
+
+
+
+}

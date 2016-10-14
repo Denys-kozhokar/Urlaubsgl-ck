@@ -1,0 +1,30 @@
+
+*, *:before, *:after { 
+	box-sizing: border-box;
+	// transition: all 0.3s linear 0s;
+}
+
+a { 
+	text-decoration: none;
+}
+
+.container{
+	max-width: 940px;
+	margin: 0 auto;
+}
+
+@import "partials/reset.css";
+
+@import "_var.scss";
+
+@import "_mixin.scss";
+
+@import "font.css";
+
+@import "partials/_header.scss";
+
+@import "sprite.scss";
+
+@import "partials/_main.scss";
+
+ @import "partials/_footer.scss";
