@@ -30,45 +30,38 @@ function getPictures(word){
 	    	   	var pictures = JSON.parse(xmlhttp.responseText);
 				console.log(pictures.results);
 				var gridItems = document.querySelectorAll('.grid__item');
-				// var grid = document.querySelector('.grid');
-				//console.log(grid);//gridItems.length
+
 				for( var i = 0, length = gridItems.length; i < length; i++){
 					var src = pictures.results[i].url;
-					var word = pictures.results[i].title;
-					var img = '<img class=".grid__item" src="' + src + '">';
-					gridItems[i].innerHTML += img;
-					// grid.innerHTML += img;
-
+					var word = '<p class="grid__title">' + pictures.results[i].title + '</p>';
+					var img = 'url("' + src + '")';
+					gridItems[i].innerHTML = word;
+					gridItems[i].style.backgroundImage = img;
+					console.log(pictures.results[i].title);
 				}
 				masonry();
 	    	}
 	  	}
 	};
 	xmlhttp.send(null);
-				
-
-	//return pictures;
 };
 
 function masonry(){
 	var container = document.querySelector('.grid');
 	var msnry;
   msnry = new Masonry( container, {
+  columnWidth: '.grid__sizer',
+ 	gutter: '.grid__gutter',
   itemSelector: '.grid__item',
-// указываем класс элемента являющегося блоком в нашей сетке
-          singleMode: false,
-// true - если у вас все блоки одинаковой ширины
-	  isResizable: true,
-// перестраивает блоки при изменении размеров окна
-	  isAnimated: true,
-// анимируем перестроение блоков
-          animationOptions: { 
-	      queue: false, 
-	      duration: 500 
-	  }
-  // columnWidth: '.grid__sizer',
-  // percentPosition: true
+ 	percentPosition: true,
 });
+}
+
+function searchPictures(event) {
+	var request = document.querySelector('.discover__input');
+	getPictures(request.value);
+	request.value = '';
+	event.preventDefault ? event.preventDefault() : (event.returnValue=false);
 }
 
 var slider = {
@@ -80,13 +73,13 @@ var slider = {
 		var percent = Math.round(Math.abs(currentMargin/currentWidth*10));
 		switch(percent) {
 			case 0:
-				holder.style.marginLeft = '-100%';
-				break;
- 	        case 3:
 				holder.style.marginLeft = '-200%';
 				break;
-			case 7:
+ 	        case 3:
 				holder.style.marginLeft = '0%';
+				break;
+			case 7:
+				holder.style.marginLeft = '-100%';
 				break;
 		}
 	},
@@ -97,13 +90,13 @@ var slider = {
 		var percent = Math.round(Math.abs(currentMargin/currentWidth*10));
 		switch(percent) {
 			case 0:
-				holder.style.marginLeft = '-200%';
+				holder.style.marginLeft = '-100%';
 				break;
  	        case 3:
-				holder.style.marginLeft = '0%';
+				holder.style.marginLeft = '-200%';
 				break;
 			case 7:
-				holder.style.marginLeft = '-100%';
+				holder.style.marginLeft = '0';
 				break;
 		}
 	}
@@ -114,6 +107,9 @@ document.addEventListener("DOMContentLoaded", function(){
 var pictures = getPictures();
 var arrowLeft = document.querySelectorAll('.carousel__arrow--left');
 var arrowRight = document.querySelectorAll('.carousel__arrow--right');
+
+var discoverBtn = document.querySelector('.discover__button');
+discoverBtn.addEventListener("click", searchPictures);
 
 for (var i=0;i<arrowLeft.length;i++){
         arrowLeft[i].addEventListener("click", slider.left);
@@ -133,33 +129,3 @@ for (var i=0;i<arrowRight.length;i++){
 // imagesLoaded( container, function() {
 // });
 
-
- // switch (images.length) {
- //                    case 1:
- //                        ulElement.appendChild(liElement1);
- //                        var liElement3 = document.createElement('li');
- //                        liElement3.style.width = this.sliderContainer.offsetWidth + 'px';
- //                        liElement3.style.background = "url('"+ images[0] +"') no-repeat center center";   
- //                        liElement3.style.backgroundSize = "cover";
- //                        liElement3.innerHTML = textBlock;
-
- //                        var divWithText3 = liElement3.childNodes[1];  
- //                        divWithText3.innerHTML = "<a>photo "+ 1 +"</a>";
- //                        divWithText3.innerHTML+= "<h1>"+ texts[0].tittle +"</h1>";
- //                        divWithText3.innerHTML+= "<p>"+ texts[0].description +"</p>";
- //                        ulElement.appendChild(liElement3); 
- //                        break;
- //                    case 2:
- //                        ulElement.appendChild(liElement2);
- //                        var liElement3 = document.createElement('li');
- //                        liElement3.style.width = this.sliderContainer.offsetWidth + 'px';
- //                        liElement3.style.background = "url('"+ images[1] +"') no-repeat center center";   
- //                        liElement3.style.backgroundSize = "cover";
- //                        liElement3.innerHTML = textBlock;
-
- //                        var divWithText3 = liElement3.childNodes[1];  
- //                        divWithText3.innerHTML = "<a>photo "+ 2 +"</a>";
- //                        divWithText3.innerHTML+= "<h1>"+ texts[1].tittle +"</h1>";
- //                        divWithText3.innerHTML+= "<p>"+ texts[1].description +"</p>";
- //                        ulElement.appendChild(liElement3);                         
- //                        break;

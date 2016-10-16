@@ -1,2 +1,1 @@
 //= partials/script.js
-
