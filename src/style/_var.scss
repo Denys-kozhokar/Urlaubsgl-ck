@@ -41,4 +41,7 @@ $yellow-bg: #ffa507;
 $green-bg: #1cd7ad;
 $indigo-bg: #4e73db;
 
-
+//for svg sprite
+$ieSprite: '.lt-ie9' !default;
+$svg-sprite: map-get($icons, svg-sprite) !default;
+$baseFontSize: 16px !default;

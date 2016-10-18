@@ -10,7 +10,10 @@ var gulp = require('gulp'),
     cssmin = require('gulp-clean-css'),
     spritesmith = require('gulp.spritesmith'),
     imagemin = require('gulp-imagemin'),
-    pngout = require('imagemin-pngout');
+    pngout = require('imagemin-pngout'),
+    svgSprite = require('gulp-svg-sprite'),
+    svg2png = require('gulp-svg2png'),
+    size = require('gulp-size');
 
 var path = {
     build: {
@@ -26,6 +29,8 @@ var path = {
         style: 'src/style/main.scss',
         img: 'src/img/*.*',
         sprite: 'src/img/sprite/*.*',
+        svgSprite: 'src/img/svg/*.*',
+        svgFile: 'src/img/svgsprite.svg',
         fonts: 'src/fonts/**/*.*'
     },
     watch: {
@@ -92,7 +97,45 @@ gulp.task('sprite:build', function() {
     spriteData.img.pipe(gulp.dest('./src/img/'));
     spriteData.css.pipe(gulp.dest('./src/style/'));
 });
+///////////////////////////////////////////
+gulp.task('svgSprite', function () {
+    gulp.src(path.src.svgSprite)
+        .pipe(svgSprite({
+            shape: {
+                spacing: {
+                    padding: 5
+                }
+            },
+            mode: {
+                css: {
+                    dest: "../../",
+                    
+                    sprite: path.src.svgFile,///////
+                    bust: false,
+                    render: {
+                        scss: {
+                            dest: "src/style/svgsprite.scss",
+                            template: "src/style/tpl/sprite-template.scss"
+                        }
+                    }
+                }
+            },
+            variables: {
+                mapname: "icons"
+            }
+        }))
+        .pipe(gulp.dest('src/img/'));
+});
 
+gulp.task('svg2pngSprite', /*['svgSprite'],*/ function() {
+    gulp.src(path.src.svgFile)
+        .pipe(svg2png())
+        .pipe(size({
+            showFiles: true
+        }))
+        .pipe(gulp.dest('src/img/'));
+});
+///////////////////////////////////////////
 
 gulp.task('fonts:build', function() {
     gulp.src(path.src.fonts)

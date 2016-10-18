@@ -161,11 +161,23 @@ main{
 			bottom: -4px;
 		}
 
+		&:before{
+			@include svg-sprite(skype);
+			content: '';
+			position: absolute;
+			right: 3px;
+			bottom: 2px;
+			z-index: 2;
+		}
+
 		&--1{
 			@include sprite($partner-1);
-				&:after{
-				content: '';
-				background-color: $findBg;
+			&:after{
+			content: '';
+			background-color: $findBg;
+			}
+			&:before{
+				@include svg-sprite(skype);
 			}
 		}
 		&--2{

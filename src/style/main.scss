@@ -15,16 +15,18 @@ a {
 
 @import "partials/reset.css";
 
-@import "_var.scss";
+@import "svgsprite.scss";
 
 @import "_mixin.scss";
 
-@import "font.css";
+@import "_var.scss";
 
-@import "partials/_header.scss";
+@import "font.css";
 
 @import "sprite.scss";
 
+@import "partials/_header.scss";
+
 @import "partials/_main.scss";
 
- @import "partials/_footer.scss";
+@import "partials/_footer.scss";
