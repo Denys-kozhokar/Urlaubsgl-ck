@@ -1,5 +1,5 @@
 footer{
-	padding: 16px 0 18px;
+	padding: 15px 0 18px;
 	background-color: $white-bg;
 	border-top: $footer-border;
 }
@@ -55,7 +55,10 @@ footer{
 }
 
 .areto{
-	text-align: center;
+	width: 120px;
+	margin: 0 auto;
+	background-color: #eee;
+	@include svg-sprite(areto);
 }
 
 

@@ -67,7 +67,9 @@ gulp.task('style:build', function () {
     gulp.src(path.src.style) 
         .pipe(sourcemaps.init())
         .pipe(sass())
-        .pipe(prefixer())
+        .pipe(prefixer({
+            browsers: ['last 2 version', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1', 'ios 6', 'android 4']
+}))
         .pipe(cssmin())
         .pipe(sourcemaps.write())
         .pipe(gulp.dest(path.build.css));
@@ -86,7 +88,7 @@ gulp.task('image:build', function () {
 
 gulp.task('sprite:build', function() {
     var spriteData = 
-        gulp.src(path.src.sprite)////////////////add min
+        gulp.src(path.src.sprite)
             .pipe(spritesmith({
                 imgName: 'sprite.png',
                 cssName: 'sprite.scss',

@@ -28,14 +28,14 @@ main{
 		cursor: pointer;
 		&--left{
 			@include sprite($arrow-left);
-			left: 10%;
+			left: 8.5%;
 			&:hover{
 				@include sprite($arrow-left-hover);
 			}
 		}
 		&--right{
 			@include sprite($arrow-right);
-			right: 10%;
+			right: 8.5%;
 			&:hover{
 				@include sprite($arrow-right-hover);
 			}
@@ -53,6 +53,14 @@ main{
 	&--2{
 		.carousel__holder{
 			margin-left: -100%;
+		}
+		.carousel__arrow{
+			&--left{
+				left: 4%;				
+			}
+			&--right{
+				right: 4%;				
+			}
 		}
 	}
 
@@ -126,7 +134,7 @@ main{
 
 	&__title{
 		@extend .howItWorks__title;
-		margin-bottom: 13px;
+		margin-bottom: 12px;
 		margin-left: -7px;
 	}
 
@@ -147,7 +155,6 @@ main{
 		border-radius: 50%;
 		margin: 0 auto;
 		position: relative;
-		left: -2px;
 
 		&:after{
 			content: '';
@@ -157,48 +164,66 @@ main{
 			height: 40px;
 			width: 40px;
 			position: absolute;
-			right: -4px;
+			right: -3px;
 			bottom: -4px;
 		}
 
 		&:before{
-			@include svg-sprite(skype);
 			content: '';
 			position: absolute;
-			right: 3px;
-			bottom: 2px;
+			right: 8px;
+			bottom: 8px;
 			z-index: 2;
 		}
 
 		&--1{
 			@include sprite($partner-1);
 			&:after{
-			content: '';
-			background-color: $findBg;
+				background-color: $findBg;
 			}
 			&:before{
-				@include svg-sprite(skype);
+				@include svg-sprite(tv);
 			}
 		}
 		&--2{
 			@include sprite($partner-2);
+			background-position: -129px -3px;
+		    width: 121px;
+		    height: 120px;
 			&:after{
-				content: '';
 				background-color: $yellow-bg;
+			}
+			&:before{
+				@include svg-sprite(colba);
+				right: 9px;
+    			bottom: 7px;
 			}
 		}
 		&--3{
 			@include sprite($partner-3);
+			background-position: -1px -127px;
+		    width: 121px;
+		    height: 121px;
+		    left: -2px;
 			&:after{
-				content: '';
 				background-color: $green-bg;
+			}
+			&:before{
+				@include svg-sprite(cup);
+				right: 8px;
 			}
 		}
 		&--4{
 			@include sprite($partner-4);
+			background-position: -2px -2px;
+		    width: 121px;
+		    height: 120px;
+		    left: -3px;
 			&:after{
-				content: '';
 				background-color: $indigo-bg;
+			}
+			&:before{
+				@include svg-sprite(plain);
 			}
 		}
 
@@ -229,7 +254,7 @@ main{
 		border: $red-border;
 		background-color: $white-bg;
 		border-radius: $bordRadius;
-		margin: -2px auto 0;
+		margin: 0 auto;
 		width: 280px;
 
 		&_link{
@@ -247,12 +272,12 @@ main{
 .ideas{
 	&__title{
 		@extend .howItWorks__title;
+		line-height: 26px;
 		margin-bottom: 13px;
 	}
 
 	&__holder{
 		height: 901px;
-		border: 1px solid black;
 		max-width: 320px;
 		margin: 0 auto;
 	}
@@ -264,9 +289,9 @@ main{
 
 		&__item {
 			@extend .grid__sizer;
-			height: 118px;
+			height: 121px;
 			border-radius: 5px;
-			margin-bottom: 10px;
+			margin-bottom: 9px;
 			background-position: center center;
 			background-repeat: no-repeat;
 			background-size: cover;
@@ -368,9 +393,6 @@ main{
 			display: block;
 		}
 
-		// &__item{
-
-		// }
 
 		&__content{
 			padding-right: 15px;
@@ -418,6 +440,36 @@ main{
 			width: 192px;
 			position: relative;
 			left: -2px;
+		}
+
+		&__figure{
+			&:before{
+				right: 34px;
+				bottom: 20px;
+			}
+
+			&--1{
+				// &:before{
+				// 	@include svg-sprite(tv);
+				// }
+			}
+			&--2{		
+				// &:before{
+				// 	@include svg-sprite(cup);
+				// }
+			}
+			&--3{
+				left: 0;	
+				// &:before{
+				// 	@include svg-sprite(colba);
+				// }
+			}
+			&--4{
+				left: 0;
+				// &:before{
+				// 	@include svg-sprite(plain);
+				// }
+			}
 		}
 	}
 
@@ -497,11 +549,29 @@ main{
 		width: 31.914893617021278%;
 		margin-right: 2.127659574468085%;
 
+		&--2{
+			.carousel__arrow{
+				&--left{
+					left: 7%;				
+				}
+				&--right{
+					right: 7%;				
+				}
+			}			
+		}
+
 		&--3{
 			margin-right: 0;
 		}
+
 		&__arrow{
-			top: 15%;
+			top: 38%;
+			&--left{
+				left: 7.5%;				
+			}
+			&--right{
+				right: 7%;				
+			}
 		}
 
 		&__text{
@@ -559,8 +629,13 @@ main{
 
 			&__item--width2 {
 					width:  65.95744680851064%; 
-			}
-			
+			}			
+		}
+	}
+
+	.discover{
+		&__title{
+			margin-top: 27px;
 		}
 	}
 }
