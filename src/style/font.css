@@ -35,6 +35,17 @@
 }
 
 
+@font-face {
+  font-family: 'icomoon';
+  src:  url('../fonts/icomoon.eot?kat9ex');
+  src:  url('../fonts/icomoon.eot?kat9ex#iefix') format('embedded-opentype'),
+    url('../fonts/icomoon.ttf?kat9ex') format('truetype'),
+    url('../fonts/icomoon.woff?kat9ex') format('woff'),
+    url('../fonts/icomoon.svg?kat9ex#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+ 
 [class^="icon-"], [class*=" icon-"] {
   /* use !important to prevent issues with browser extensions that change fonts */
   font-family: 'icomoon' !important;
@@ -50,43 +61,17 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-arrow:before {
+.icon-colba:before {
   content: "\e900";
 }
-.icon-facebook:before {
+.icon-cup:before {
   content: "\e901";
 }
-.icon-frontemail:before {
+.icon-plain:before {
   content: "\e902";
 }
-.icon-iPhonepotrait:before {
+.icon-tv:before {
   content: "\e903";
 }
-.icon-linkedin:before {
-  content: "\e904";
-}
-.icon-location:before {
-  content: "\e905";
-}
-.icon-params:before {
-  content: "\e906";
-}
-.icon-rss:before {
-  content: "\e907";
-}
-.icon-search:before {
-  content: "\e908";
-}
-.icon-settings:before {
-  content: "\e909";
-}
-.icon-skype:before {
-  content: "\e90a";
-}
-.icon-truck:before {
-  content: "\e90b";
-}
-.icon-twitter:before {
-  content: "\e90c";
-}
+
 

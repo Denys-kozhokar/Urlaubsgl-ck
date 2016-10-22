@@ -28,7 +28,7 @@ function getPictures(word){
 	xmlhttp.open('GET', url, true);
 	xmlhttp.onreadystatechange = function() {
 	  	if (xmlhttp.readyState == 4) {
-	    	if(xmlhttp.status == 200) {
+	    	if(xmlhttp.status >= 200 && this.status < 400) {
 	    	   	var pictures = JSON.parse(xmlhttp.responseText);
 				console.log(pictures);
 				var gridItems = document.querySelectorAll('.grid__item');
@@ -66,15 +66,32 @@ function searchPictures(event) {
 	event.preventDefault ? event.preventDefault() : (event.returnValue=false);
 }
 
+function initSlider(){
+      var arrowLeft = document.querySelectorAll('.carousel__arrow--left');
+      var arrowRight = document.querySelectorAll('.carousel__arrow--right');
+      
+      for (var i=0;i<arrowLeft.length;i++){
+              // arrowLeft[i].addEventListener("click", slider.left);
+              arrowLeft[i].onclick = slider.left;
+    // alert( 'Клик!' );}
+      }
 
-document.addEventListener("DOMContentLoaded", function(){
-
+      for (var i=0;i<arrowRight.length;i++){
+              //arrowRight[i].addEventListener("click", slider.right);
+              arrowRight[i].onclick = slider.right;
+      }
+    }
+    
+//document.addEventListener("DOMContentLoaded", function(){
+$(function(){
 	var pictures = getPictures();
-
+	initSlider();
 
 	var discoverBtn = document.querySelector('.discover__button');
-	discoverBtn.addEventListener("click", searchPictures);
+	//discoverBtn.addEventListener("click", searchPictures);
+	discoverBtn.onclick = searchPictures;
 
+    
 
 });
 

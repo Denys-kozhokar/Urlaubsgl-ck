@@ -1,4 +1,4 @@
-(function() {
+;
   var slider = {
     left: function() {
       
@@ -37,29 +37,9 @@
     }
   };
 
-  document.addEventListener("DOMContentLoaded", function(){
 
-    initSlider();
+  //document.addEventListener("DOMContentLoaded", function(){
+  // $(function(){
+  //   initSlider();
 
-    function initSlider(){
-      var arrowLeft = document.querySelectorAll('.carousel__arrow--left');
-      var arrowRight = document.querySelectorAll('.carousel__arrow--right');
-      
-      for (var i=0;i<arrowLeft.length;i++){
-              arrowLeft[i].addEventListener("click", slider.left);
-      }
-
-      for (var i=0;i<arrowRight.length;i++){
-              arrowRight[i].addEventListener("click", slider.right);
-      }
-    }
-  });
-
-  // function export(object, name) {
-  //   if (typeof module === "object" && module != null && typeof module.exports === "object")
-  //     module.exports[name] = object;
-  //   else
-  //     window[name] = object;
-  // };
-
-})();
+  //   console.log('slider');

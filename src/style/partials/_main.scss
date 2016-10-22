@@ -149,6 +149,15 @@ main{
 		}
 	}
 
+	&__icon{
+		position: absolute;
+			right: 9px;
+			bottom: 9px;
+			z-index: 2;
+			color: white;
+			font-size: 15px;
+	}
+
 	&__figure{
 		width: 121px;
 		height: 121px;
@@ -168,22 +177,14 @@ main{
 			bottom: -4px;
 		}
 
-		&:before{
-			content: '';
-			position: absolute;
-			right: 8px;
-			bottom: 8px;
-			z-index: 2;
-		}
-
 		&--1{
 			@include sprite($partner-1);
 			&:after{
 				background-color: $findBg;
 			}
-			&:before{
-				@include svg-sprite(tv);
-			}
+			// &:before{
+			// 	@include svg-sprite(tv);
+			// }
 		}
 		&--2{
 			@include sprite($partner-2);
@@ -193,10 +194,10 @@ main{
 			&:after{
 				background-color: $yellow-bg;
 			}
-			&:before{
-				@include svg-sprite(colba);
-				right: 9px;
-    			bottom: 7px;
+
+			.partners__icon{
+				right: 10px;
+    			bottom: 8px;
 			}
 		}
 		&--3{
@@ -208,8 +209,7 @@ main{
 			&:after{
 				background-color: $green-bg;
 			}
-			&:before{
-				@include svg-sprite(cup);
+			.partners__icon{
 				right: 8px;
 			}
 		}
@@ -222,8 +222,9 @@ main{
 			&:after{
 				background-color: $indigo-bg;
 			}
-			&:before{
-				@include svg-sprite(plain);
+			.partners__icon{
+				right: 9px;
+    			bottom: 7px;
 			}
 		}
 
@@ -442,11 +443,13 @@ main{
 			left: -2px;
 		}
 
+		&__icon{
+				right: 10px;
+				bottom: 11px;
+				font-size: 16px;			
+		}
+
 		&__figure{
-			&:before{
-				right: 34px;
-				bottom: 20px;
-			}
 
 			&--1{
 				// &:before{
@@ -508,7 +511,7 @@ main{
 
 	.discover{
 		padding-bottom: 88px;
-		max-width: 410px;
+		max-width: 411px;
 		margin: 0 auto;
 
 		&__title{
@@ -614,6 +617,11 @@ main{
 			}
 			&--4{
 				padding-left: 5px;
+				&__icon{
+					right: 11px;
+					bottom: 8px;
+					font-size:15px;			
+				}
 			}
 		}
 	}
@@ -635,7 +643,7 @@ main{
 
 	.discover{
 		&__title{
-			margin-top: 27px;
+			margin-top: 97px;
 		}
 	}
 }
