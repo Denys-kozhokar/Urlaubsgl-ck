@@ -80,11 +80,19 @@ main{
 		&--1{
 			background: url("../img/carousPicture1.jpg") no-repeat center center;
 			background-size: cover;
+			
+			@include retina() {
+				/*background: url("../img/carousPicture1-2x.jpg") no-repeat center center;*/	
+			}
 		}
 
 		&--2{
 			background: url("../img/carousPicture2.jpg") no-repeat center center;
 			background-size: cover;
+
+			@include retina() {
+				// background: url("../img/carousPicture1-2x.jpg") no-repeat center center;	
+			}
 			.carousel__text{
 				letter-spacing: 0.1px;
 			}
@@ -92,7 +100,11 @@ main{
 		
 		&--3{
 			background: url("../img/carousPicture3.jpg") no-repeat center center;
-			background-size: cover;		
+			background-size: cover;	
+
+			// @include retina() {
+			// 	background: url("../img/carousPicture1-2x.jpg") no-repeat center center;	
+			// }	
 		}
 	}
 
