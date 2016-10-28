@@ -1,37 +1,35 @@
-function getXmlHttp(){
-  var xmlhttp;
-  try {
-    xmlhttp = new ActiveXObject("Msxml2.XMLHTTP");
-  } catch (e) {
-    try {
-      xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-    } catch (E) {
-      xmlhttp = false;
-    }
-  }
-  if (!xmlhttp && typeof XMLHttpRequest!='undefined') {
-    xmlhttp = new XMLHttpRequest();
-  }
-  return xmlhttp;
-}
 
 
 function getPictures(word){
-	var xmlhttp = getXmlHttp();
 	var key = '3545825-c60bc71ac0a2a71abd3e36913';
-	var url = 'https://pixabay.com/api/?key=' + key + '&per_page=7';
-	//var url = 'https://api.riffsy.com/v1/search?key=LIVDSRZULELA&limit=7';
+	var url = 'http://pixabay.com/api/?key=' + key + '&per_page=7';
+
 	if(word){
 		url += '&q=' + word;
 	}
-	// console.log(url);
-	xmlhttp.open('GET', url, true);
-	xmlhttp.onreadystatechange = function() {
-	  	if (xmlhttp.readyState == 4) {
-	    	if(xmlhttp.status >= 200 && this.status < 400) {
-	    	   	var pictures = JSON.parse(xmlhttp.responseText);
-				console.log(pictures);
-				var gridItems = document.querySelectorAll('.grid__item');
+	
+	var XHR = ("onload" in new XMLHttpRequest()) ? XMLHttpRequest : XDomainRequest;
+
+	var xhr = new XHR();
+
+	xhr.open('GET', url, true);
+
+	xhr.onload = function() {
+	  var pictures = JSON.parse(this.responseText);
+		console.log(pictures);
+		fillMasonry(pictures);
+	}
+
+	xhr.onerror = function() {
+	  console.log( 'Ошибка ' + this.status );
+	}
+
+	xhr.send();
+
+};
+
+function fillMasonry(pictures){
+	var gridItems = document.querySelectorAll('.grid__item');
 
 				for( var i = 0, length = gridItems.length; i < length; i++){
 					var src = pictures.hits[i].webformatURL;
@@ -39,14 +37,10 @@ function getPictures(word){
 					var img = 'url("' + src + '")';
 					gridItems[i].innerHTML = word;
 					gridItems[i].style.backgroundImage = img;
-					// console.log(word);
 				}
 				masonry();
-	    	}
-	  	}
-	};
-	xmlhttp.send(null);
-};
+}
+
 
 function masonry(){
 	var container = document.querySelector('.grid');
@@ -100,4 +94,3 @@ $(function(){
     
 
 });
-
