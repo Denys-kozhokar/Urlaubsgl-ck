@@ -2,7 +2,7 @@
 
 function getPictures(word){
 	var key = '3545825-c60bc71ac0a2a71abd3e36913';
-	var url = 'http://pixabay.com/api/?key=' + key + '&per_page=7';
+	var url = 'https://pixabay.com/api/?key=' + key + '&per_page=7';
 
 	if(word){
 		url += '&q=' + word;
