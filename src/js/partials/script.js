@@ -1,30 +1,70 @@
-
+var jsonp = {
+    callbackCounter: 0,
+ 
+    fetch: function(url, callback) {
+        var fn = 'JSONPCallback_' + this.callbackCounter++;
+        window[fn] = this.evalJSONP(callback);
+        url = url.replace('=JSONPCallback', '=' + fn);
+        var scriptTag = document.createElement('SCRIPT');
+        scriptTag.src = url;
+        document.getElementsByTagName('HEAD')[0].appendChild(scriptTag);
+    },
+ 
+    evalJSONP: function(callback) {
+        return function(data) {
+            var validJSON = false;
+        if (typeof data == "string") {
+            try {validJSON = JSON.parse(data);} catch (e) {
+                /*invalid JSON*/}
+        } else {
+            validJSON = JSON.parse(JSON.stringify(data));
+                // window.console && console.warn(
+                // 'response data was not a JSON string');
+            }
+            if (validJSON) {
+                callback(validJSON);
+            } else {
+                throw("JSONP call returned invalid or empty JSON");
+            }
+        }
+    }
+}
 
 function getPictures(word){
 	var key = '3545825-c60bc71ac0a2a71abd3e36913';
-	var url = 'https://pixabay.com/api/?key=' + key + '&per_page=7';
-
+	var url = 'http://pixabay.com/api/?key=' + key + '&per_page=7';
 	if(word){
 		url += '&q=' + word;
 	}
-	
-	var XHR = ("onload" in new XMLHttpRequest()) ? XMLHttpRequest : XDomainRequest;
+	if("onload" in new XMLHttpRequest()){
+		var xmlhttp = new XMLHttpRequest();
+		xmlhttp.open('GET', url, true);
+		xmlhttp.onreadystatechange = function() {
+		  	if (xmlhttp.readyState == 4) {
+		    	if(xmlhttp.status >= 200 && this.status < 400) {
+		    	   	var pictures = JSON.parse(xmlhttp.responseText);
+		    	   	//console.log(pictures);
+		    	   	setTimeout(function() { fillMasonry(pictures) }, 100);
+					//fillMasonry(pictures);
+		    	}
 
-	var xhr = new XHR();
-
-	xhr.open('GET', url, true);
-
-	xhr.onload = function() {
-	  var pictures = JSON.parse(this.responseText);
-		console.log(pictures);
-		fillMasonry(pictures);
+		  	}
+		};
+		xmlhttp.send(null);
+		
+	} 
+	else {
+		// console.log('IE');
+		url = 'http://pixabay.com/api/?key=' + key + '&per_page=7&callback=JSONPCallback';
+		if(word){
+			url += '&q=' + word;
+		}
+		
+		jsonp.fetch(url , function(data) {
+			var pictures = data;
+			setTimeout(function() { fillMasonry(pictures) }, 100);
+		});
 	}
-
-	xhr.onerror = function() {
-	  console.log( 'Ошибка ' + this.status );
-	}
-
-	xhr.send();
 
 };
 
@@ -34,23 +74,35 @@ function fillMasonry(pictures){
 				for( var i = 0, length = gridItems.length; i < length; i++){
 					var src = pictures.hits[i].webformatURL;
 					var word = '<p class="grid__title">' + pictures.hits[i].tags + '</p>';
-					var img = 'url("' + src + '")';
-					gridItems[i].innerHTML = word;
-					gridItems[i].style.backgroundImage = img;
+					var img = '<img src="' + src + '">';
+					
+					if(pictures.hits[i].webformatHeight >= pictures.hits[i].webformatWidth){
+						gridItems[i].className = 'grid__item';
+					} else {
+						gridItems[i].className = 'grid__item grid__item--width2';
+					}
+					
+					gridItems[i].innerHTML = img;
+					gridItems[i].innerHTML += word;
+
+					// gridItems[i].style.backgroundImage = img;
 				}
 				masonry();
 }
 
 
 function masonry(){
-	var container = document.querySelector('.grid');
-	var msnry;
-  msnry = new Masonry( container, {
-  columnWidth: '.grid__sizer',
- 	gutter: '.grid__gutter',
-  itemSelector: '.grid__item',
- 	percentPosition: true,
-});
+	window.onload = function() {
+
+		var container = document.querySelector('.grid');
+		var msnry;
+		msnry = new Masonry( container, {
+			columnWidth: '.grid__sizer',
+			gutter: '.grid__gutter',
+			itemSelector: '.grid__item',
+			percentPosition: true,
+		});
+	};
 }
 
 function searchPictures(event) {
@@ -73,7 +125,6 @@ function initSlider(){
       for (var i=0;i<arrowLeft.length;i++){
               // arrowLeft[i].addEventListener("click", slider.left);
               arrowLeft[i].onclick = slider.left;
-    // alert( 'Клик!' );}
       }
 
       for (var i=0;i<arrowRight.length;i++){
@@ -84,8 +135,8 @@ function initSlider(){
     
 //document.addEventListener("DOMContentLoaded", function(){
 $(function(){
-	var pictures = getPictures();
 	initSlider();
+	getPictures();
 
 	var discoverBtn = document.querySelector('.discover__button');
 	//discoverBtn.addEventListener("click", searchPictures);

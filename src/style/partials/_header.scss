@@ -14,7 +14,7 @@ header{
 }
 
 .logo{
-	max-width: 180px;
+	max-width: 179px;
 	margin: 115px auto 0;
 	font: $MontsB-20;
 	color: $whiteText;
@@ -32,24 +32,20 @@ header{
 
 	&__signup{
 		@extend .auth__login;
-		border: $white-border;
-		border-radius: $bordRadius;
-		width: 89px;
-		height: 36px;
-		margin-left: 15px;
-		text-align: center;
-
-		a{
-			display: block;
-			width: 100%;
-			height: 100%;
-			line-height: 34px;
-		}
 	}
 
 	&__link{
+		display: block;
+		padding: 8px 15px 7px;
+		line-height: 34px;
 		font: $MontsB-14;
 		color: $whiteText;
+		border: $transparent-border;
+		border-radius: $bordRadius;			
+
+		&:hover{
+			border: $white-border;
+		}
 	}
 }
 
@@ -111,7 +107,7 @@ header{
 
 	.auth{
 		float: right;
-		margin-right: 39px;
+		margin-right: 19px;
 	} 
 
 	.share{
@@ -154,5 +150,6 @@ header{
 
 	.auth{
 		margin-right: 0;
+		width: 170px;
 	} 
 }
