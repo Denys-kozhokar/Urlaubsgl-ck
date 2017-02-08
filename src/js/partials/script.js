@@ -74,16 +74,18 @@ function fillMasonry(pictures){
 				for( var i = 0, length = gridItems.length; i < length; i++){
 					var src = pictures.hits[i].webformatURL;
 					var word = '<p class="grid__title">' + pictures.hits[i].tags + '</p>';
-					var img = '<img src="' + src + '">';
-					
+					// var img = '<img src="' + src + '">';
+					var img = 'url("' + src + '")';
+					gridItems[i].innerHTML = word;
+					gridItems[i].style.backgroundImage = img;
 					// if(pictures.hits[i].webformatHeight >= pictures.hits[i].webformatWidth){
 					// 	gridItems[i].className = 'grid__item';
 					// } else {
 					// 	gridItems[i].className = 'grid__item grid__item--width2';
 					// }
 					
-					gridItems[i].innerHTML = img;
-					gridItems[i].innerHTML += word;
+					// gridItems[i].innerHTML = img;
+					// gridItems[i].innerHTML += word;
 
 					// gridItems[i].style.backgroundImage = img;
 				}
